@@ -8,8 +8,8 @@ name: my pipeline
                 required: true
                 default: '1'
 
-jobs
-    test:
+jobs:
+    test: 
     steps:
         - name: Set Files
           id: setFiles
