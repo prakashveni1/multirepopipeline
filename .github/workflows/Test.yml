@@ -9,13 +9,15 @@ name: my pipeline
                 default: '1'
 
 jobs:
-    test:
+  test: testing the stage
+  
+    runs-on: ubuntu-latest
     steps:
-    - name: Set Files
-      run: |
-        if [[ "${{ github.event.inputs.Files }}" == "1" ]]; then
-            echo "::set-output name=FilesString::batch"
-        fi
-        if [[ "${{ github.event.inputs.device }}" == "2" ]]; then
-            echo "::set-output name=FilesString::Datbase"
-        fi
+      - name: Set Files
+        run: |
+          if [[ "${{ github.event.inputs.Files }}" == "1" ]]; then
+              echo "::set-output name=FilesString::batch"
+          fi
+          if [[ "${{ github.event.inputs.device }}" == "2" ]]; then
+              echo "::set-output name=FilesString::Datbase"
+          fi
