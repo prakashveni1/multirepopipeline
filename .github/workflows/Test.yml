@@ -7,19 +7,3 @@ name: my pipeline
                 description: '[1] Batch, [2] Database, [3] Config'
                 required: true
                 default: '1'
-
-jobs:
-    test: 
-    steps:
-        - name: Set Files
-          id: setFiles
-          run: |
-            if [[ "${{ github.event.inputs.Files }}" == "1" ]]; then
-                echo "::set-output name=deviceString::Batch"
-            fi
-            if [[ "${{ github.event.inputs.Files }}" == "2" ]]; then
-                echo "::set-output name=deviceString::database"
-            fi
-            if [[ "${{ github.event.inputs.Files }}" == "3" ]]; then
-                echo "::set-output name=deviceString::Config"
-            fi
