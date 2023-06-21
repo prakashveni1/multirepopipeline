@@ -1,9 +1,22 @@
 name: my pipeline
 
-"on":
+"on": push
     workflow_dispatch:
         inputs:  
             Files:
-                description: '[1] Batch, [2] Database, [3] Config'
+                description: '[1] batch, [2] database'
                 required: true
                 default: '1'
+
+jobs:
+    test:
+    steps:
+        - name: Set Files
+          id: setFiles
+          run: |
+            if [[ "${{ github.event.inputs.Files }}" == "1" ]]; then
+                echo "::set-output name=FilesString::batch"
+            fi
+            if [[ "${{ github.event.inputs.device }}" == "2" ]]; then
+                echo "::set-output name=FilesString::Datbase"
+            fi
