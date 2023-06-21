@@ -1,6 +1,6 @@
 name: my pipeline
 
-"on": push
+"on":
     workflow_dispatch:
         inputs:  
             Files:
