@@ -9,9 +9,9 @@ name: my pipeline
                 default: '1'
 
 jobs:
-  test: testing the stage
-  
+  build:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Set Files
         run: |
