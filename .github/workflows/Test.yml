@@ -1,21 +1,29 @@
 name: my pipeline
 
-"on":
+on:
     workflow_dispatch:
         inputs:  
             Files:
                 description: '[1] batch, [2] database'
                 required: true
                 default: '1'
+            choice:
+        type: choice
+        description: Make a choice
+        options:
+        - batch
+        - database
 
 jobs:
   build:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Set Files
-        run: |
-          if [[ "${{ github.event.inputs.Files }}" == "1" ]]; then
+     - uses: actions/checkout@v2
+     
+     - name: Set Files
+       run: |
+         if [[ "${{ github.event.inputs.Files }}" == "1" ]]; then
               echo "::set-output name=FilesString::batch"
           fi
           if [[ "${{ github.event.inputs.device }}" == "2" ]]; then
